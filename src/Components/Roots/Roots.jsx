@@ -8,7 +8,6 @@ const Roots = () => {
         <div className='w-11/12 mx-auto py-4'>
             <Navbar></Navbar>
             <Outlet></Outlet>
-            <h3>Hellow Developers</h3>
             <Footer></Footer>
         </div>
     );
