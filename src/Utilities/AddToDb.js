@@ -1,4 +1,4 @@
-
+import {  toast } from 'react-toastify';
 const getToDBMarksRead =() =>{
     const storedRead = localStorage.getItem('marks_read');
     if(storedRead){
@@ -12,11 +12,12 @@ const getToDBMarksRead =() =>{
 const setToDBMarksRead =(id)=>{
     const StoredItem = getToDBMarksRead();
     if(StoredItem.includes(id)){
-        return alert(`${id} already added `)
+        return toast.error('AlReady added')
     } else{
     StoredItem.push(id);
     const setItems = JSON.stringify(StoredItem)
-    localStorage.setItem('marks_read' , setItems)
+    localStorage.setItem('marks_read' , setItems);
+    toast.success('Successfully Added!')
     
     }
 }
@@ -34,11 +35,12 @@ const getToDBWishList = () =>{
 const setToDBWishList = (id) =>{
     const storedWishListData = getToDBWishList();
     if(storedWishListData.includes(id)){
-        return alert(`${id}  already added `)
+        return toast.error('AlReady added')
     }else{
         storedWishListData.push(id);
         const setWishList = JSON.stringify(storedWishListData);
         localStorage.setItem('wish-list' , setWishList)
+        toast.success('Successfully Added!')
     }
 }
 
