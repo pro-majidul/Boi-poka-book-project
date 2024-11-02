@@ -42,4 +42,4 @@ const setToDBWishList = (id) =>{
     }
 }
 
-export {setToDBMarksRead , setToDBWishList ,getToDBMarksRead}
+export {setToDBMarksRead , setToDBWishList ,getToDBMarksRead , getToDBWishList}
