@@ -10,20 +10,26 @@ import Roots from './Components/Roots/Roots';
 import Error from './Components/Error/Error';
 import Home from './Components/Home/Home';
 import Dashboard from './Components/Dashboard/Dashboard';
+import BookDetails from './Components/BookDetail/BookDetails';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Roots></Roots>,
-    errorElement : <Error></Error>,
-    children:[
+    errorElement: <Error></Error>,
+    children: [
       {
-        path : "/",
-        element : <Home></Home>
+        path: "/",
+        element: <Home></Home>
       },
       {
-        path : '/dashboard',
-        element : <Dashboard></Dashboard>
+        path: '/book/:bookId',
+        element: <BookDetails></BookDetails>,
+        loader: () => fetch('/booksData.json'),
+      },
+      {
+        path: '/dashboard',
+        element: <Dashboard></Dashboard>
       }
     ]
   },

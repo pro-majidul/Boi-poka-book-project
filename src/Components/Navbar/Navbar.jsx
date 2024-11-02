@@ -9,7 +9,7 @@ const Navbar = () => {
     </>
     return (
         <div>
-            <div className="navbar backdrop-blur-md bg-white z-50  fixed top-0 ">
+            <div className="navbar backdrop-blur-md bg-white  ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex="0" role="button" className="btn btn-ghost lg:hidden">
@@ -40,8 +40,9 @@ const Navbar = () => {
                         {link}
                     </ul>
                 </div>
-                <div className="navbar-end pe-36">
-                    <a className="btn">Button</a>
+                <div className="navbar-end ">
+                    <a className="btn mr-4 btn-accent">Sign In</a>
+                    <a className="btn">Sign Up</a>
                 </div>
             </div>
         </div>
