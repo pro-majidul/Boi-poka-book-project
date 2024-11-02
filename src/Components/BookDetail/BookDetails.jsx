@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
+import { setToDBMarksRead } from '../../Utilities/AddToDb';
 
 const BookDetails = () => {
     const { bookId } = useParams();
@@ -8,6 +9,9 @@ const BookDetails = () => {
     const data = useLoaderData();
 
     const book = data.find(bookItem => bookItem.bookId === id);
+    const marksAddRead = id =>{
+        setToDBMarksRead(id)
+    }
 
     return (
         <div className='min-h-[calc(90vh-230px)] py-5 my-10' >
@@ -25,21 +29,21 @@ const BookDetails = () => {
                     <div className='flex gap-5 my-3 py-3'>
                         <p className='font-semibold'>Tags</p>
                         <div>
-                            {book.tags.map((tag, index) => <button className='ml-6 bg-green-100 text-green-500     py-1 px-2 rounded-xl'>#{tag}</button>)}
+                            {book.tags.map((tag, index) => <button key={index} className='ml-6 bg-green-100 text-green-500  py-1 px-2 rounded-xl'>#{tag}</button>)}
                         </div>
                     </div>
                     <div className='divider'></div>
                     <div className='flex flex-col space-y-5'>
-                    <p className='font-semibold'><span className='text-gray-500  inline-flex  '>Number Of Pages</span> : <span>{book.totalPages}</span> </p>
-                    <p className='font-semibold'><span className='text-gray-500 '>Publisher</span> : {book.publisher}</p>
-                    <p className='font-semibold'><span className='text-gray-500 '>Year Of Publishing</span> : {book.yearOfPublishing}</p>
-                    <p className='font-semibold'><span className='text-gray-500 '>Ratting</span> : {book.rating}</p>
+                        <p className='font-semibold'><span className='text-gray-500  inline-flex  '>Number Of Pages</span> : <span>{book.totalPages}</span> </p>
+                        <p className='font-semibold'><span className='text-gray-500 '>Publisher</span> : {book.publisher}</p>
+                        <p className='font-semibold'><span className='text-gray-500 '>Year Of Publishing</span> : {book.yearOfPublishing}</p>
+                        <p className='font-semibold'><span className='text-gray-500 '>Ratting</span> : {book.rating}</p>
                     </div>
                     <div className='py-3 my-4'>
-                        <button className='btn btn-outline font-bold mr-4'>Read</button>
-                        <button className='btn btn-accent'>Wishlist</button>
+                        <button onClick={() => marksAddRead(book.bookId)} className='btn btn-outline btn-accent text-black font-bold mr-4'>Mark as Read</button>
+                        <button className='btn text-white btn-accent'>Add to Wishlist</button>
                     </div>
-                   
+
                 </div>
 
             </div>
