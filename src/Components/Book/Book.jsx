@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Book = ({ book }) => {
 
-    const { bookName,bookId, author, image, tags, category, rating } = book
+    const {yearOfPublishing,totalPages, bookName,bookId, author, image, tags, category, rating } = book
 
     return (
         <Link to={`/book/${bookId}`}>
@@ -23,15 +23,21 @@ const Book = ({ book }) => {
                         {bookName}
                     </h2>
                     <p>By : {author}</p>
-                    <div className='border-t-2 border-dashed my-4'></div>
+                    <div className='border-t-2 border-dashed my-4'>
+
+                    </div>
                     <div className="card-actions justify-between">
-                        <div className="">{category}</div>
+                        <p>{category}</p>
                         <div className='flex gap-2'>
                             <p className='text-xl'>{rating}</p>
                             <div className='rating'>
                                 <input type="radio" name="rating-1" className="mask mask-star" />
                             </div>
                         </div>
+                    </div>
+                    <div className='flex justify-between items-center'>
+                    <p>Pages : {totalPages}</p>
+                    <p>Publish Date : {yearOfPublishing}</p>
                     </div>
                 </div>
             </div>
