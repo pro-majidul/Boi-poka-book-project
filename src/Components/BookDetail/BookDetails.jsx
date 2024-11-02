@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
-import { setToDBMarksRead } from '../../Utilities/AddToDb';
+import { setToDBMarksRead, setToDBWishList } from '../../Utilities/AddToDb';
 
 const BookDetails = () => {
     const { bookId } = useParams();
@@ -9,9 +9,14 @@ const BookDetails = () => {
     const data = useLoaderData();
 
     const book = data.find(bookItem => bookItem.bookId === id);
-    const marksAddRead = id =>{
+
+    const marksAddRead = id => {
         setToDBMarksRead(id)
     }
+    const handelWishLish = id => {
+        setToDBWishList(id)
+    }
+
 
     return (
         <div className='min-h-[calc(90vh-230px)] py-5 my-10' >
@@ -41,7 +46,7 @@ const BookDetails = () => {
                     </div>
                     <div className='py-3 my-4'>
                         <button onClick={() => marksAddRead(book.bookId)} className='btn btn-outline btn-accent text-black font-bold mr-4'>Mark as Read</button>
-                        <button className='btn text-white btn-accent'>Add to Wishlist</button>
+                        <button onClick={() => handelWishLish(book.bookId)} className='btn text-white btn-accent'>Add to Wishlist</button>
                     </div>
 
                 </div>
